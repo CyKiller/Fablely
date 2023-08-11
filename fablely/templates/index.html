@@ -1,0 +1,28 @@
+"""
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fablely - AI-Powered Novel Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Fablely</h1>
+        <p>Generate your own novel powered by AI.</p>
+        <form action="/generate" method="post">
+            <label for="prompt">Prompt:</label><br>
+            <input type="text" id="prompt" name="prompt" required><br>
+            <label for="writing_style">Writing Style:</label><br>
+            <input type="text" id="writing_style" name="writing_style" required><br>
+            <label for="chapter_count">Chapter Count:</label><br>
+            <input type="number" id="chapter_count" name="chapter_count" min="1" required><br>
+            <label for="genre">Genre:</label><br>
+            <input type="text" id="genre" name="genre" required><br>
+            <input type="submit" value="Generate">
+        </form>
+    </div>
+</body>
+</html>
+"""

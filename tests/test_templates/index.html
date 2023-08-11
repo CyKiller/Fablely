@@ -1,0 +1,37 @@
+## Import Section
+import unittest
+from flask import Flask, render_template_string
+from flask_testing import TestCase
+
+## Test Class Definition
+class TestTemplates(TestCase):
+
+    def create_app(self):
+        app = Flask(__name__)
+        app.config['TESTING'] = True
+        return app
+
+    ## Test Case: Check if the title is correctly set
+    def test_title(self):
+        response = self.client.get('/')
+        self.assert_template_used('index.html')
+        self.assertIn(b'Fablely - AI-Powered Novel Generator', response.data)
+
+    ## Test Case: Check if form fields are correctly set
+    def test_form_fields(self):
+        response = self.client.get('/')
+        self.assert_template_used('index.html')
+        self.assertIn(b'<input type="text" id="prompt" name="prompt" required>', response.data)
+        self.assertIn(b'<input type="text" id="writing_style" name="writing_style" required>', response.data)
+        self.assertIn(b'<input type="number" id="chapter_count" name="chapter_count" min="1" required>', response.data)
+        self.assertIn(b'<input type="text" id="genre" name="genre" required>', response.data)
+
+    ## Test Case: Check if form action is correctly set
+    def test_form_action(self):
+        response = self.client.get('/')
+        self.assert_template_used('index.html')
+        self.assertIn(b'<form action="/generate" method="post">', response.data)
+
+## Main Section
+if __name__ == '__main__':
+    unittest.main()

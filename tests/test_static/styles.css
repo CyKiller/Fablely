@@ -1,0 +1,77 @@
+import unittest
+import os
+
+class TestCSS(unittest.TestCase):
+    def setUp(self):
+        self.file_path = "/Users/cykiller/MetaGPT/workspace/fablely/fablely/static/styles.css"
+        self.expected_content = """
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 2.5em;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: #354458;
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+form {
+    width: 100%;
+    padding: 20px;
+    background: #fff;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+
+form input[type="text"],
+form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+form input[type="submit"] {
+    display: block;
+    width: 100%;
+    height: 40px;
+    border: 0;
+    background-color: #354458;
+    color: white;
+    cursor: pointer;
+}
+"""
+        
+    def test_file_exists(self):
+        self.assertTrue(os.path.exists(self.file_path), "CSS file does not exist")
+
+    def test_file_content(self):
+        with open(self.file_path, 'r') as f:
+            content = f.read()
+        self.assertEqual(content.strip(), self.expected_content.strip(), "CSS file content is not as expected")
+
+if __name__ == "__main__":
+    unittest.main()

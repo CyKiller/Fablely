@@ -1,0 +1,9 @@
+flask
+bcrypt
+langchain
+openai
+milvus
+fiass
+tqdm
+logging
+fpdf
